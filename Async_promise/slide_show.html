@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide show</title>
+</head>
+<style>
+    #btn{
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 2%;
+    }
+    button{
+        color: white;
+         font-size: 25px;
+        background-color: black;
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+    }
+    button:hover{
+        background-color: red;
+    }
+    img{
+        height: 400px;
+        width: 100%;
+    }
+</style>
+<body>
+    <img src="" alt="">
+    <div id="btn">
+    <button id="previous">< previous</button>
+    <button id="next">Next ></button>
+    <button id="click" onclick="Start()">Start</button>
+    </div>
+</body>
+</html>
+<script>
+
+    let imgArray = [
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1709381551607.jpeg",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/93b99990a7fa61d6.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/c8f548688def283c.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/bd94c9e6358f3a70.jpg?q=20",
+        "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/7cac5455bc76f32a.jpg?q=20",
+        "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/c8f548688def283c.jpg?q=20",
+        "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/bd94c9e6358f3a70.jpg?q=20",
+        "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/c8f548688def283c.jpg?q=20",
+        "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/f39cd50df3682fa7.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/3fd4396f5e73f9b8.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/3fd4396f5e73f9b8.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/24888359deaa199c.jpg?q=20",
+        "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/11cd504bbc3a1493.jpg?q=20",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1713520486421.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1709381269674.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1713456072413.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1709381269674.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1713456072413.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1711131145991.jpeg",
+        "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/resize-w:1440/theme-image-1713520486421.jpeg"
+    ]
+    let prev = document.getElementById("previous")
+    let next = document.getElementById("next")
+    let imgShow = document.querySelector("img")
+    let imgcount = 0;
+    // imgShow.setAttribute("src",imgArray[imgcount])
+    
+    let click = document.querySelector("#click")
+
+    // click = 0;
+    let flag = true
+    function Start(){
+        if(click){
+            false
+            great()
+        }
+        else{
+            true
+            great() = 0
+        }
+       
+    }
+
+
+    prev.addEventListener("click",function(){
+
+        imgcount--
+
+        if(imgcount<0){
+
+            imgcount = imgArray.length-1;
+        }
+
+        imgShow.setAttribute("src",imgArray[imgcount])
+    
+
+    })
+
+    next.addEventListener("click",function(){
+
+        imgcount++
+
+        if(imgcount>= imgArray.length-1){
+            imgcount = 0 
+        }
+
+        imgShow.setAttribute("src",imgArray[imgcount])
+    
+    })
+
+
+    function great(){
+
+        setInterval(function(){
+            // prev.addEventListener("click",function(){
+
+            imgcount--
+
+            if(imgcount<0){
+
+            imgcount = imgArray.length-1;
+           }
+
+          imgShow.setAttribute("src",imgArray[imgcount])
+
+        },1000)
+    }
+    // great()
+</script>

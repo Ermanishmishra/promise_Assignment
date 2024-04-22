@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+</head>
+<style>
+    .container{
+        width: 40%;
+        margin: auto;
+        margin-top: 25%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 30px;
+    }
+    .inputShow{
+        padding-bottom: 20px;
+        margin: auto;
+        /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+
+    }
+    .btn{
+        gap: 20px;
+        /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    }
+    .btn>button{
+        gap: 20px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="inputShow"> 
+            <label>Hours:</label>
+            <input type="number" id="hours" min="0" max="59" value="0">
+
+            <label>Minutes:</label>
+            <input type="number" id="minute" min="0" max="59" value="0">
+
+            <label>Second:</label>
+            <input type="number" id="second" min="0" max="59" value="0">
+
+        </div> 
+        
+        <div class="btn">
+            <button onclick="Start()">Start</button>
+            <button onclick="Pause()">Stop</button>
+            <button onclick="Reset()">Reset</button>
+        </div>
+    </div> 
+</body>
+</html>
+<script>
+    let timeRemaining;
+    let intervalId;
+     function Start(){
+        let hours = Number(document.getElementById("hours").value);
+        let minute = Number(document.getElementById("minute").value);
+        let second = Number(document.getElementById("second").value);
+       
+
+        timeRemaining = hours*3600 + minute*60 + second;
+
+        intervalId = setInterval(function() {
+            timeRemaining--
+
+            let hrs = Math.floor(timeRemaining/3600);
+
+            let mnt = Math.floor((timeRemaining%3600)/60);
+
+            let scnd = timeRemaining%60;
+
+
+
+            document.getElementById("hours").value = hrs;
+
+            document.getElementById("minute").value = mnt;
+
+            document.getElementById("second").value = scnd;
+
+
+            if(timeRemaining<=0){
+                clearInterval(intervalId)
+
+                intervalId = null;
+
+                alert("Time is Over!!")
+            }
+            console.log(hours,minute,second,intervalId)
+        }, 1000);
+       
+     }
+    
+
+     function Pause(){
+         clearInterval(intervalId)
+
+         intervalId = null;
+     }
+
+     function Reset(){
+       Pause()
+        document.getElementById("hours").value = 0;
+
+        document.getElementById("minute").value = 0;
+
+        document.getElementById("second").value = 0;
+
+     }
+
+       
+    
+</script>
